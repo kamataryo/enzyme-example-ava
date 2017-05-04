@@ -1,5 +1,7 @@
 require('babel-register')
+const { JSDOM } = require('jsdom')
 
-global.document = require('jsdom').jsdom('<body></body>')
-global.window = document.defaultView
+const { window } = new JSDOM('<body></body>')
+global.window = window
+global.document = window.document
 global.navigator = window.navigator
